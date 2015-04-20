@@ -71,6 +71,7 @@ Method for iniating a user session. Also retrieves a lot of information about th
 * password: user's patreon login password
 
 **Response**
+
 data: user object
 
 In addition to returning a JSON object with information about the user, the server also responds with a Set-Cookie header that sets a cookie named "session_id" to a unique session ID on the domain "patreon.com". This cookie appears to expire a month later by default.
@@ -85,6 +86,7 @@ Seems to be an authentication thing for Facebook?
 * email: the email associated with the user's Facebook account?
 
 **Response**
+
 unknown
 
 
@@ -93,6 +95,7 @@ unknown
 Retrieves information about the currently logged-in user. Appending "?include=cards" to the URL causes credit card information to be included as well.
 
 **Response**
+
 data: user object
 
 If "?include=cards", card objects (see below) will be linked.
@@ -104,6 +107,7 @@ If "?include=cards", card objects (see below) will be linked.
 Presumably returns a list of notifications? I don't have any notifications, so it just gave me an empty array
 
 **Response**
+
 data: array of notification objects, presumably
 
 
@@ -113,6 +117,7 @@ data: array of notification objects, presumably
 Retrieves a list of campaigns. Only seems to work if "?filter=subbable" is appended to the URL
 
 **Response**
+
 data: array of campaign objects
 
 
@@ -134,6 +139,7 @@ Retrieves drafts for a particular campaign??? **[requires api key]**
 Gets a list of all the categories on the site **[requires api key]**
 
 **Response**
+
 data: array of all category objects
 
 
@@ -148,6 +154,7 @@ Creates a post??? Or maybe creates an ID for a post, which can then be modified 
 Retrieves a given post by its numeric ID **[requires api key]**
 
 **Response**
+
 data: a post object
 
 
@@ -171,6 +178,7 @@ Undeletes a previously-deleted post??? **[requires api key]**
 Retrieves the attachments for a given post??? unknown because I don't know of a post with attachments to test against **[requires api key]**
 
 **Response**
+
 data: an array, presumably of attachments?
 
 
@@ -266,7 +274,7 @@ Represents a comment on a post
 
 ### Post
 
-Represents a post from a campaign
+Represents a post or creation on a campaign
 
 ```
 {
