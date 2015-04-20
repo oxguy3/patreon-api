@@ -49,8 +49,8 @@ If your request demanded that additional objects be included, the API will link 
 
 Method for iniating a user session. Also retrieves a lot of information about the logged in user.
 
-#### Body
-data:
+#### Body data
+
 * email: user's patreon login email
 * password: user's patreon login password
 
@@ -63,8 +63,8 @@ In addition to returning a JSON object with information about the user, the serv
 ### /user (POST)
 Seems to be an authentication thing for Facebook?
 
-#### Body
-data:
+#### Body data
+
 * fb\_access\_token: presumably an access token for Facebook's API?
 * email: the email associated with the user's Facebook account?
 
