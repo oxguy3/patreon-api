@@ -82,6 +82,17 @@ data: user object
 If "?include=cards", card objects (see below) will be linked.
 
 
+
+### /campaign (GET)
+
+Retrieves a list of campaigns. Only seems to work if "?filter=subbable" is appended to the URL
+
+#### Response
+data: array of campaign objects
+
+
+
+
 ## Data types
 
 These are the types of objects that the API may include in its responses, either as the main "data" object, or as an object in the "linked" array.
@@ -126,5 +137,25 @@ Represents a credit card or other payment method (i.e. PayPal)
   },
   "number": <last four digits of credit card>, // will be 0 for PayPal
   "type": "card"
+}
+```
+
+### Campaign
+
+Represents a campaign (seems to be a Subbable thing)
+
+```
+{
+  "about": "<description of campaign>", // can contain HTML markup
+  "creation_name": "<name of campaign>",
+  "creator": <number>, // might correspond to Patreon user id??? not sure
+  "creator_name": "<name of creator>", // might correspond to Patreon user name???
+  "id": <number>, // campaign ID number
+  "image_small_url": "<url to 320x320 image>",
+  "image_url": "<url to 714x402 image>",
+  "one_liner": "<short description of campaign>",
+  "pay_per_name": "<pay per what?>" // what are supporters being charged for? (e.g. "month", "video", etc.)
+  "type": "campaign",
+  "url": "<url to patreon campaign>" // generally https://www.patreon.com/<username>
 }
 ```
