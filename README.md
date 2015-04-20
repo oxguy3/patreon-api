@@ -269,40 +269,38 @@ Represents a post from a campaign
 
 ```
 {
-  "data": {
-    "campaign_id": "<id of associated campaign>",
-    "category": <category if relevant>, // null if no comment set
-    "cents_pledged_at_creation": <number>, // what was the total sum of all pledges at the time when this was posted?
-    "comment_count": <comment count>,
-    "content": "<body text>",
-    "created_at": "<timestamp>", // presumably can't be null
-    "current_user_has_liked": <boolean>, // has the logged in user liked this post?
-    "deleted_at": <timestamp>, // null if not deleted
-    "edited_at": <timestamp>, // null if not edited
-    "embed": { // stuff for embedding videos. if it's not a video, all sub-fields will be set to null
-        "description": null, // video description
-        "domain": null, // web domain of platform where video is uploaded
-        "html": null, // video embed code
-        "subject": null, // video title
-        "url": null // video url (i.e. on youtube or whatever other platform)
-    },
-    "id": "<id of this post>",
-    "image_height": <height of large image>, // 0 if no image
-    "image_large_url": "<url of full size image>", // null if no image
-    "image_url": "<url of image shrunk to 320px wide>", // null if no image
-    "image_width": <width of large image>, // 0 if no image
-    "is_creation": <boolean>, // is this a creation or just a post?
-    "is_paid": <boolean>, // true if this is an automated post after a month/content is completed, else false
-    "like_count": <number of likes>,
-    "min_cents_pledged_to_view": <number>, // minimum individual pledge necessary to view post
-    "post_type": "<image|text_only|link>", // may be other unknown values
-    "published_at": "<timestamp>", // null if unpublished
-    "thumbnail_url": "<url of 75x75 image>", // null if no image
-    "title": "<post title>",
-    "type": "post",
-    "url": "<url to this post>",
-    "user_id": "<id of user who posted>"
-  }
+  "campaign_id": "<id of associated campaign>",
+  "category": <category if relevant>, // null if no comment set
+  "cents_pledged_at_creation": <number>, // what was the total sum of all pledges at the time when this was posted?
+  "comment_count": <comment count>,
+  "content": "<body text>",
+  "created_at": "<timestamp>", // presumably can't be null
+  "current_user_has_liked": <boolean>, // has the logged in user liked this post?
+  "deleted_at": <timestamp>, // null if not deleted
+  "edited_at": <timestamp>, // null if not edited
+  "embed": { // stuff for embedding videos. if it's not a video, all sub-fields will be set to null
+      "description": null, // video description
+      "domain": null, // web domain of platform where video is uploaded
+      "html": null, // video embed code
+      "subject": null, // video title
+      "url": null // video url (i.e. on youtube or whatever other platform)
+  },
+  "id": "<id of this post>",
+  "image_height": <height of large image>, // 0 if no image
+  "image_large_url": "<url of full size image>", // null if no image
+  "image_url": "<url of image shrunk to 320px wide>", // null if no image
+  "image_width": <width of large image>, // 0 if no image
+  "is_creation": <boolean>, // is this a creation or just a post?
+  "is_paid": <boolean>, // true if this is an automated post after a month/content is completed, else false
+  "like_count": <number of likes>,
+  "min_cents_pledged_to_view": <number>, // minimum individual pledge necessary to view post
+  "post_type": "<image|text_only|link>", // may be other unknown values
+  "published_at": "<timestamp>", // null if unpublished
+  "thumbnail_url": "<url of 75x75 image>", // null if no image
+  "title": "<post title>",
+  "type": "post",
+  "url": "<url to this post>",
+  "user_id": "<id of user who posted>"
 }
 ```
 
