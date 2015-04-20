@@ -84,7 +84,9 @@ If "?include=cards", card objects (see below) will be linked.
 
 ## Data types
 
+These are the types of objects that the API may include in its responses, either as the main "data" object, or as an object in the "linked" array.
 
+### User
 
 A user object contains information about a Patreon user, usually the currently logged-in user.
 
@@ -107,6 +109,7 @@ A user object contains information about a Patreon user, usually the currently l
 }
 ```
 
+### Card
 
 Represents a credit card or other payment method (i.e. PayPal)
 
@@ -117,6 +120,7 @@ Represents a credit card or other payment method (i.e. PayPal)
   "id": "<unique identifier>",
   "links": {
     "user": {
+      "id": "<user id>",
       "type": "user"
     }
   },
