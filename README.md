@@ -193,7 +193,7 @@ These are the types of objects that may be included in requests or responses, ei
 
 ### Campaign
 
-Represents a campaign (seems to be a Subbable thing)
+Represents a campaign. Presumably there are a lot more fields, but I don't have a campaign so I don't know about them.
 
 ```
 {
@@ -241,6 +241,7 @@ Represents a category of campaign (e.g. Music, Comics, etc)
   "name": <display name for category>,
   "type": "category"
 }
+```
 
 
 ### Comment
