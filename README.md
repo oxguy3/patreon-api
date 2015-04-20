@@ -3,11 +3,13 @@ Patreon uses an API of sorts for a lot of actions on their website; it's just no
 
 All requests are based on the domain https://api.patreon.com. Requests can be GET or POST (usually POST). POST requests generally take JSON data and require the header "Content-type: application/json" to avoid a 500 error.
 
-## /login (POST)
+## Methods
 
-Method for initiating a logged in user session. Also retrieves a lot of information about the logged in user. In addition to returning a JSON object with information about the user, the server also responds with a Set-Cookie header that sets a cookie named "session_id" to a unique session ID on the domain "patreon.com". This cookie appears to expire a month later by default.
+### /login (POST)
 
-### Body
+Method for iniating a user session. Also retrieves a lot of information about the logged in user. In addition to returning a JSON object with information about the user, the server also responds with a Set-Cookie header that sets a cookie named "session_id" to a unique session ID on the domain "patreon.com". This cookie appears to expire a month later by default.
+
+#### Body
 ```
 {
   data: {
@@ -16,7 +18,7 @@ Method for initiating a logged in user session. Also retrieves a lot of informat
   }
 }
 ```
-### Response
+#### Response
 ```
 {
     "data": {
