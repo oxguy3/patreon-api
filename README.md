@@ -1,5 +1,5 @@
 # Patreon API
-Patreon uses an API of sorts for a lot of actions on their website; it's just not documented. I'm doing some digging and am going to try my best to provide some documentation for it. I am not at all affiliated with Patreon and provide no warranty that this information will work in the future or even now. I'm just publishing it in the hope that it will be useful and will help people extend the Patreon platform in awesome ways.
+Patreon is developing an API of sorts. It's currently not used for a lot of actions on their website, other than for a few cleaned up features. It's also not documented yet. I'm doing some digging and am going to try my best to provide some documentation for it. I am not at all affiliated with Patreon and provide no warranty that this information will work in the future or even now. I'm just publishing it in the hope that it will be useful and will help people extend the Patreon platform in awesome ways.
 
 ## Notes
 
@@ -7,8 +7,9 @@ Some important information to look at before diving into this API.
 
 ### Making requests
 
-All requests are based on the domain https://api.patreon.com. Requests can be GET or POST (usually POST). POST requests generally take JSON data and require the header "Content-type: application/json" to avoid a 500 error.
+Patreon is making us of the JSON API spec so some implementation details can be found by plumbing that documentation.
 
+All requests are based on the domain https://api.patreon.com. Requests can be GET, POST, PUT or DELETE (usually POST).
 All requests and responses take this general form:
 ```
 {
@@ -78,7 +79,7 @@ In addition to returning a JSON object with information about the user, the serv
 
 
 ### /user (POST)
-Seems to be an authentication thing for Facebook?
+Creates a user, currently used for FB registrations
 
 **Body data**
 
@@ -87,7 +88,7 @@ Seems to be an authentication thing for Facebook?
 
 **Response**
 
-unknown
+User resource
 
 
 ### /current_user (GET)
@@ -104,7 +105,7 @@ If "?include=cards", card objects (see below) will be linked.
 
 ### /notifications
 
-Presumably returns a list of notifications? I don't have any notifications, so it just gave me an empty array
+An endpoint for an unreleased feature ;)
 
 **Response**
 
@@ -124,19 +125,18 @@ data: array of campaign objects
 
 ### /campaign/current_campaign (GET)
 
-Retrieves data about the current campaign??? **[requires api key]**
+Unfinished enpoint for an unrelased feature **[requires api key]**
 
 
 
 ### /campaign/:campaignid/drafts (GET)
 
-Retrieves drafts for a particular campaign??? **[requires api key]**
-
+Unfinished enpoint for an unrelased feature **[requires api key]**
 
 
 ### /categories (GET)
 
-Gets a list of all the categories on the site **[requires api key]**
+Unfinished enpoint for an unrelased feature **[requires api key]**
 
 **Response**
 
@@ -146,10 +146,12 @@ data: array of all category objects
 
 ### /post (GET)
 
-Creates a post??? Or maybe creates an ID for a post, which can then be modified with another call??? **[requires api key]**
+Unfinished enpoint for an unrelased feature **[requires api key]**
 
 
 ### /post/:postid (GET)
+
+Unfinished enpoint for an unrelased feature
 
 Retrieves a given post by its numeric ID **[requires api key]**
 
@@ -160,22 +162,30 @@ data: a post object
 
 ### /post/:postid (POST)
 
-Modifies an existing post??? **[requires api key]**
+Unfinished enpoint for an unrelased feature
+
+Modifies an existing post **[requires api key]**
 
 
 ### /post/:postid (DELETE)
 
-Deletes an existing post??? **[requires api key]**
+Unfinished enpoint for an unrelased feature
+
+Deletes an existing post **[requires api key]**
 
 
 ### /post/:postid/undelete (GET?)
 
-Undeletes a previously-deleted post??? **[requires api key]**
+Unfinished enpoint for an unrelased feature
+
+Undeletes a previously-deleted post **[requires api key]**
 
 
 ### /post/:postid/attachments (GET)
 
-Retrieves the attachments for a given post??? unknown because I don't know of a post with attachments to test against **[requires api key]**
+Unfinished enpoint for an unrelased feature
+
+Retrieves the attachments for a given post **[requires api key]**
 
 **Response**
 
@@ -184,7 +194,9 @@ data: an array, presumably of attachments?
 
 ### /post/:postid/attachments (POST)
 
-Uploads an attachment??? **[requires api key]**
+Unfinished enpoint for an unrelased feature
+
+Uploads an attachment **[requires api key]**
 
 
 ### /post/:postid/attachments (DELETE)
