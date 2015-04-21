@@ -78,7 +78,8 @@ In addition to returning a JSON object with information about the user, the serv
 
 
 ### /user (POST)
-Seems to be an authentication thing for Facebook?
+
+Seems to be another authentication thing or something for Facebook???
 
 **Body data**
 
@@ -88,6 +89,15 @@ Seems to be an authentication thing for Facebook?
 **Response**
 
 unknown
+
+
+### /user/:userid (GET)
+
+Retrieves data about a given user **[requires api key]**
+
+**Response**
+
+data: user object
 
 
 ### /current_user (GET)
@@ -125,6 +135,12 @@ data: array of campaign objects
 ### /campaign/current_campaign (GET)
 
 Retrieves data about the current campaign??? **[requires api key]**
+
+
+
+### /campaign/:campaignid (GET)
+
+You would think this would pull up information about a given campaign. Patreon does seem to check if the given campaign ID is valid (you'll get an error telling you if the campaign ID is bad), but it ends up returning a 500 error. **[requires api key]**
 
 
 
@@ -320,19 +336,19 @@ A user object contains information about a Patreon user, usually the currently l
 
 ```
 {
-  "about": "", // perhaps a tagline or something?
+  "about": "<about me>", // an optional bio, can be null
   "created": "<timestamp>",
   "email": "<user email>",
   "first_name": "<first name>",
   "full_name": "<first and last name>",
-  "gender": <number>, // male is 1, presumably 2 is female?
+  "gender": <number>, // 0 if unset, 1 if male, 2 if female
   "id": "<user id>", // is always numeric afaik, but appears as a string nonetheless
   "image_url": "<url to 200x200 jpg>",
   "last_name": "<last name>",
-  "status": 1, // not sure what this means
+  "status": 1, // not sure what this means, usually it's 1 but I have seen 0
   "thumb_url": "<url to 50x50 jpg>",
   "type": "user",
   "url": "<clean url to user profile>",
-  "vanity": "<custom url username, if set>"
+  "vanity": "<custom url username>" // null if no vanity username set
 }
 ```
