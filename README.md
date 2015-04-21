@@ -7,7 +7,7 @@ Some important information to look at before diving into this API.
 
 ### Making requests
 
-Patreon is making us of the [JSON API spec](http://jsonapi.org) so some implementation details can be found by plumbing that documentation.
+Patreon is making use of the [JSON API spec](http://jsonapi.org) so some implementation details can be found by plumbing that documentation.
 
 ### API keys
 
