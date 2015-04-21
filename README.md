@@ -34,7 +34,7 @@ Method for iniating a user session. Also retrieves a lot of information about th
 
 **Response**
 
-data: user object
+* data: user object
 
 In addition to returning a JSON object with information about the user, the server also responds with a Set-Cookie header that sets a cookie named "session_id" to a unique session ID on the domain "patreon.com". This cookie appears to expire a month later by default.
 
@@ -50,7 +50,7 @@ Creates a user, currently used for FB registrations
 
 **Response**
 
-User object
+* data: user object
 
 
 ### /user/:userid (GET)
@@ -59,7 +59,7 @@ Retrieves data about a given user **[requires api key]**
 
 **Response**
 
-data: user object
+* data: user object
 
 
 ### /current_user (GET)
@@ -68,9 +68,8 @@ Retrieves information about the currently logged-in user. Appending "?include=ca
 
 **Response**
 
-data: user object
-
-If "?include=cards", card objects (see below) will be linked.
+* data: user object
+* If "?include=cards", card objects (see below) will be linked.
 
 
 
@@ -80,7 +79,7 @@ Unfinished endpoint for an unreleased feature
 
 **Response**
 
-data: currently an empty array
+* data: currently an empty array
 
 
 
@@ -90,7 +89,7 @@ Retrieves a list of campaigns. Only seems to work if "?filter=subbable" is appen
 
 **Response**
 
-data: array of campaign objects
+* data: array of campaign objects
 
 
 
@@ -106,8 +105,8 @@ Retrieves information about a particular campaign **[requires api key]**
 
 **Response**
 
-data: array of all category objects
-included: array of all reward objects and the user object for the creator of this campaign
+* data: array of all category objects
+* included: array of all reward objects and the user object for the creator of this campaign
 
 
 
@@ -123,7 +122,18 @@ Gets a list of all the categories on the site (this is part of an unreleased fea
 
 **Response**
 
-data: array of all category objects
+* data: array of all category objects
+
+
+
+### /reward/:rewardid (GET)
+
+Retrieves a given reward by its numeric ID **[requires api key]**
+
+**Response**
+
+* data: a reward object
+* included: the user object of the creator
 
 
 
@@ -140,7 +150,7 @@ Retrieves a given post by its numeric ID **[requires api key]**
 
 **Response**
 
-data: a post object
+* data: a post object
 
 
 ### /post/:postid (POST)
@@ -172,7 +182,7 @@ Retrieves the attachments for a given post **[requires api key]**
 
 **Response**
 
-data: an array, presumably of attachments?
+* data: an array, presumably of attachments?
 
 
 ### /post/:postid/attachments (POST)
