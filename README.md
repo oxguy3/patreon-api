@@ -11,7 +11,7 @@ Patreon is making use of the [JSON API spec](http://jsonapi.org) so some impleme
 
 ### API keys
 
-Some requests require that you have an API key when you make them. This is done by appending "?api_key=YOUR API KEY" to the end of the URL. At present, it looks like there's only one API key shared by everyone: 1745177328c8a1d48100a9b14a1d38c1. Methods marked with "(key)" require that you include an api key.
+Some requests require that you have an API key when you make them. This is done by appending "?api_key=YOUR API KEY" to the end of the URL. At present, it looks like there's only one API key shared by everyone: 1745177328c8a1d48100a9b14a1d38c1. Methods that require an api key are marked as such.
 
 
 ### Timestamps
@@ -102,7 +102,12 @@ Unfinished endpoint for an unreleased feature **[requires api key]**
 
 ### /campaign/:campaignid (GET)
 
-Unfinished endpoint for an unreleased feature. You would think this would pull up information about a given campaign. Patreon does seem to check if the given campaign ID is valid (you'll get an error telling you if the campaign ID is bad), but it ends up returning a 500 error. **[requires api key]**
+Retrieves information about a particular campaign **[requires api key]**
+
+**Response**
+
+data: array of all category objects
+included: array of all reward objects and the user object for the creator of this campaign
 
 
 
@@ -193,19 +198,38 @@ These are the types of objects that may be included in requests or responses, ei
 
 ### Campaign
 
-Represents a campaign. Presumably there are a lot more fields, but I don't have a campaign so I don't know about them.
+Represents a campaign (i.e. a content creator's patreon page, essentially). Often, the 'included' array will include all the reward objects for this campaign and a user object for the creator of this campaign.
 
 ```
 {
   "about": "<description of campaign>", // can contain HTML markup
+  "created_at": "<timestamp>"
   "creation_name": "<name of campaign>",
-  "creator": <number>, // might correspond to Patreon user id??? not sure
-  "creator_name": "<name of creator>", // might correspond to Patreon user name???
+  "creator": <number>, // seems to be a Subbable-only thing??
+  "creator_name": "<name of creator>", //seems to be a Subbable-only thing??
   "id": <number>, // campaign ID number
   "image_small_url": "<url to 320x320 image>",
   "image_url": "<url to 714x402 image>",
+  "is_monthly": <boolean>, // does this campaign charge per-month or per-creation?
+  "is_nsfw": <boolean>,
+  "links": {
+    "rewards": {
+      "linkage": [
+        // array of reward objects
+      ]
+    }
+  }
+  "main_video_embed": "<html>", // an embed tag for the campaign's main video
+  "main_video_url": "<url>", // an url to the campaign's main video
   "one_liner": "<short description of campaign>",
+  "patron_count": <number>,
   "pay_per_name": "<pay per what?>" // what are supporters being charged for? (e.g. "month", "video", etc.)
+  "pledge_sum": <number>, // pledged amount in cents
+  "published_at": "<timestamp>",
+  "summary": "<html markup>",
+  "thanks_embed": "<html>", // embed tag for patron thanks video (null if no video),
+  "thanks_msg": "<text>", // message shown to thank patrons
+  "thanks_video_url": "<url>", // url for patron thanks video (null if no video),
   "type": "campaign",
   "url": "<url to patreon campaign>" // generally https://www.patreon.com/<username>
 }
@@ -303,6 +327,32 @@ Represents a post or creation on a campaign
   "url": "<url to this post>",
   "user_id": "<id of user who posted>"
 }
+```
+
+
+### Reward
+
+Represents a reward tier for a campaign. There are two reward objects, id:-1 "Everyone" and id:0 "Patrons Only", that seem to be global and constant for all campaigns.
+
+```
+{
+  "amount": <number>, // pledge in cents required to access this reward (null if unrestricted)
+  "created_at": <timestamp>, // null for global rewards
+  "creator_id": null, // only appears for global rewards
+  "description": "<html markup>", // description of what this 
+  "id": "<unique identifier>",
+  "links": {
+    "creator": {
+      "linkage": {
+          "id": "<user id of creator of this reward>",
+          "type": "user"
+      }
+    }
+  },
+  "requires_shipping": <boolean>, // does patreon require a shipping address from users who enter at this level?
+  "type": "reward",
+  "user_limit": <number> // how many users are allowed to claim this reward? 0 if unlimited, null for global rewards
+},
 ```
 
 
